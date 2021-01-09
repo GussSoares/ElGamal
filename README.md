@@ -6,19 +6,19 @@
 
 ## Execução
 #### Para a primeira execução, execute:
-´´´sh
+```sh
 sudo docker-compose up --build
-´´´
+```
 
 #### Para as demais execuções, execute:
-´´´sh
+```sh
 sudo docker-compose up
-´´´
+```
 
 #### Para finalizar os containers:
-´´´sh
+```sh
 sudo docker-compose down -v
-´´´
+```
 
 ## Alteração das mensagens
 Para alterar as mensagens, acesse os arquivo ***docker-compose.yaml*** e altere a frase do cliente escolhido na variável de ambiente **MESSAGE**.
