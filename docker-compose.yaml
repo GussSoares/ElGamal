@@ -1,0 +1,64 @@
+version: "3.7"
+services:
+  server:
+    build: .
+    image: elgamal
+    container_name: 'elgamal_server'
+    volumes:
+      - ./server_app:/home/project/server_app
+    command: "uvicorn server_app.main:app --host 0.0.0.0 --port 8888 --reload --debug --workers 1"
+
+  middleware:
+    image: elgamal
+    container_name: 'elgamal_middleware'
+    depends_on:
+      - server
+    links:
+      - server
+    volumes:
+      - ./middleware_app:/home/project/middleware_app
+    command: "uvicorn middleware_app.main:app --host 0.0.0.0 --port 8000 --reload --debug --workers 3"
+    ports:
+      - 8000:8000
+
+  client_1:
+    image: elgamal
+    container_name: 'elgamal_client_1'
+    depends_on:
+      - middleware
+      - server
+    links:
+      - middleware
+    volumes:
+      - ./client_app:/home/project/client_app
+    environment:
+      - MESSAGE=Tio GuS esta aqui
+    command: "python client_app/main.py"
+
+  client_2:
+    image: elgamal
+    container_name: 'elgamal_client_2'
+    depends_on:
+      - middleware
+      - server
+    links:
+      - middleware
+    volumes:
+      - ./client_app:/home/project/client_app
+    environment:
+      - MESSAGE=The Gabriel esta aqui
+    command: "python client_app/main.py"
+
+  client_3:
+    image: elgamal
+    container_name: 'elgamal_client_3'
+    depends_on:
+      - middleware
+      - server
+    links:
+      - middleware
+    volumes:
+      - ./client_app:/home/project/client_app
+    environment:
+      - MESSAGE=I am aqui
+    command: "python client_app/main.py"
