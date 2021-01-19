@@ -7,8 +7,8 @@ from middleware_app.algorithm.elgamal import ElGamal
 
 
 def Generate_Parameters_PG():
-    P = 66952748238564900903939127649986228632532313405399
-    G = 50198608759272757702393646073477911607815113132586
+    P = 59399
+    G = 59333
     return P, G
 
 
@@ -44,9 +44,10 @@ async def get_params():
 
 @router.post('/get-inverse', tags=['api'])
 async def get_inverse(item: Item):
-    middleware_elgamal.Generate_Private_Key(item.public_key)
-    print(middleware_elgamal.private_key)
-    decrypted_message = middleware_elgamal.Decrypt_Message(item.message)
+    # middleware_elgamal.Generate_Private_Key(item.public_key)
+    decrypted_message = middleware_elgamal.Decrypt_Message(
+                            item.public_key,
+                            item.message)
     decrypted_message = Get_Inverse_From_Server(decrypted_message)
 
     return {

@@ -32,8 +32,8 @@ services:
     volumes:
       - ./client_app:/home/project/client_app
     environment:
-      - MESSAGE=Tio GuS esta aqui
-    command: "python client_app/main.py"
+      - MESSAGE=12345
+    command: "python -u client_app/main.py"
 
   client_2:
     image: elgamal
@@ -46,8 +46,8 @@ services:
     volumes:
       - ./client_app:/home/project/client_app
     environment:
-      - MESSAGE=The Gabriel esta aqui
-    command: "python client_app/main.py"
+      - MESSAGE=6789
+    command: "python -u client_app/main.py"
 
   client_3:
     image: elgamal
@@ -60,5 +60,5 @@ services:
     volumes:
       - ./client_app:/home/project/client_app
     environment:
-      - MESSAGE=I am aqui
-    command: "python client_app/main.py"
+      - MESSAGE=13579
+    command: "python -u client_app/main.py"
