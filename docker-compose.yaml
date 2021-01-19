@@ -32,7 +32,7 @@ services:
     volumes:
       - ./client_app:/home/project/client_app
     environment:
-      - MESSAGE=12345
+      - MESSAGE=13321
     command: "python -u client_app/main.py"
 
   client_2:
@@ -46,7 +46,7 @@ services:
     volumes:
       - ./client_app:/home/project/client_app
     environment:
-      - MESSAGE=6789
+      - MESSAGE=14431
     command: "python -u client_app/main.py"
 
   client_3:
@@ -60,5 +60,5 @@ services:
     volumes:
       - ./client_app:/home/project/client_app
     environment:
-      - MESSAGE=13579
+      - MESSAGE=15541
     command: "python -u client_app/main.py"
